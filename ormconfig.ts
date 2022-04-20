@@ -1,4 +1,5 @@
 export default {
+  url: process.env.DATABASE_URL,
   type: 'postgres',
   host: 'localhost',
   port: 5432,
@@ -7,10 +8,11 @@ export default {
   database: process.env.POSTGRES_DB,
   synchronize: false,
   logging: false,
-  entities: ['src/entities/**/*.ts'],
-  migrations: ['src/migrations/**/*.ts'],
+  entities: ['./build/src/entities/**/*.js'],
+  migrations: ['./build/src/migrations/**/*.js'],
   cli: {
-    entitiesDir: 'src/entities',
-    migrationsDir: 'src/migrations',
+    entitiesDir: './build/rc/entities',
+    migrationsDir: './build/src/migrations',
   },
+  ssl: { rejectUnauthorized: false },
 };
